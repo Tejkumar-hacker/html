@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .grid{
+            display: grid;
+            /* grid-template-columns: repeat(3, 2fr); */
+            grid-column: 1/4;
+             grid-template-columns: 1fr 2fr 1fr;
+        }
+        .item{
+            background: lightblue;
+        }
+        img{
+            width: 100%;
+            height:auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="img">
+            <img src="images/onepiece.jpg" alt="blank">
+        </div><br><br>
+        
+    <div class="grid">
+        
+        <div class="item">a</div>
+        <div class="item">S</div>
+        <div class="item">D</div>
+    </div>
+</body>
+</html>
