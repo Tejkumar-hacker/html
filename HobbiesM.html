@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <script>
+        var myHobbies =[{"hobby": "cricket", fav: false}, {"hobby": "football", fav: true}, {"hobby": "badminton", fav: false}];
+        var hobbiesList;
+function displayHobbies(){
+  hobbiesList = "<ol class='list-group list-group-numbered'>";
+
+  for (var i = 0; i < myHobbies.length; i++) {
+    hobbiesList += `
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <span>
+          ${myHobbies[i].hobby}
+          ${myHobbies[i].fav ? '<i class="bi bi-star-fill text-warning ms-2"></i>' : ''}
+        </span>
+
+        <span>
+          <button class="btn btn-danger btn-sm ms-2" onclick="delHobby(${i})">
+            <i class="bi bi-trash"></i>
+          </button>
+
+          <button class="btn btn-warning btn-sm ms-2" onclick="toggleFav(${i})">
+            <i class="bi ${myHobbies[i].fav ? 'bi-star-x' : 'bi-star'}"></i>
+          </button>
+        </span>
+      </li>`;
+  }
+
+  hobbiesList += "</ol>";
+  document.getElementById("hobbies").innerHTML = hobbiesList;
+}
+
+        let addHobby = ()=>{
+            let newHobby = document.getElementById("newHobby").value;
+            myHobbies.unshift({hobby: newHobby, fav: false});
+            displayHobbies();
+
+        }
+
+        function delHobby(index){
+          myHobbies = myHobbies.filter((hobby, i)=> i !== index);
+          displayHobbies();
+          displayFav();
+        }
+       
+        function toggleFav(index){
+         myHobbies[index].fav = !myHobbies[index].fav;
+          displayHobbies();
+           displayFav();
+      }
+        function displayFav(){
+          let favHobbies = myHobbies.filter(hobby => hobby.fav);
+          let favList = "<ol>";
+            for (let i=0; i<favHobbies.length; i++){
+              favList += "<li>" + favHobbies[i].hobby + "</li>";
+            }
+            favList += "</ol>";
+            document.getElementById("favHobbies").innerHTML = favList;
+        }
+        
+
+    </script>
+</head>
+<body onload="displayHobbies(); displayFav(); ">
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Home</button>
+    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Hobbies</button>
+    <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">My favourites</button>
+    <button class="nav-link" id="nav-disabled-tab" data-bs-toggle="tab" data-bs-target="#nav-disabled" type="button" role="tab" aria-controls="nav-disabled" aria-selected="false" disabled>Disabled</button>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+    <h1 class="h">My Hobbies</h1>
+    <div id="hobbies"></div>
+  </div>
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+    <label for="values">Hobbies:</label>
+    <input type="text" id="newHobby" name="values"><br><br>
+    <button class="btn btn-primary" onclick="addHobby()">Add Hobby</button>
+  </div>
+  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
+    My favourite hobbies are:
+    <div id="favHobbies"></div>
+  </div>
+  <div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">...</div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

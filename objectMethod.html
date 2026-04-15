@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object</title>
+    <script>
+        let books =[
+            {
+            name: "The Alchemist",
+            price: 200,
+            author: "Paulo Coelho",
+            getDetails: function(){
+                return (`Book: ${this.name}, Author: ${this.author}, Price: ${this.price}`);
+            }
+        },
+            {
+            name: "The life of Pi",
+            price: 300,
+            author: "Paulo fernado",
+            getDetails: function(){
+                return (`Book: ${this.name}, Author: ${this.author}, Price: ${this.price}`);
+            }
+        }];
+        // console.log(books[0].getDetails());
+        // console.log(books[1].getDetails());
+        books.forEach(book => console.log(book.getDetails()));      
+    </script>
+</head>
+<body>
+    <div class="container"></div>
+</body>
+</html>

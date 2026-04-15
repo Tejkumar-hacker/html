@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Date in Javascript</h1>
+    <h2>Using new Date()</h2>
+    <p id="demo"></p>
+
+    <script>
+        const date1 = new Date();
+        const date2 = new Date("2026-05-15");
+        const date3 = new Date(2026, 5);
+        const date4 = new Date(2026, 5, 15);
+        const date5 = new Date(2026, 5, 15, 10, 30, 45);
+
+        document.getElementById("demo").innerHTML = date1 + "<br>" + date2 + "<br>" + date3 + "<br>" + date4 + "<br>" + date5;
+    </script>
+</body>
+</html>
