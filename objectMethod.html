@@ -4,30 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Object</title>
-    <script>
-        let books =[
-            {
+    
+    <style>
+    #book {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.book-card {
+    background-color: rgb(203, 203, 218);
+    color: #202a17;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.book-card:hover {
+    background-color: rgb(5, 5, 80);
+    color: white;
+    transform: scale(1.05);
+}
+
+    </style>
+
+</head>
+<body>
+    <div id="book">
+    </div>
+
+        <script>
+    let books = [
+        {
             name: "The Alchemist",
             price: 200,
             author: "Paulo Coelho",
-            getDetails: function(){
-                return (`Book: ${this.name}, Author: ${this.author}, Price: ${this.price}`);
+            getDetails() {
+                return `Book: ${this.name}<br>Author: ${this.author}<br>Price: ₹${this.price}`;
             }
         },
-            {
-            name: "The life of Pi",
+        {
+            name: "The Life of Pi",
             price: 300,
-            author: "Paulo fernado",
-            getDetails: function(){
-                return (`Book: ${this.name}, Author: ${this.author}, Price: ${this.price}`);
+            author: "Paulo Fernando",
+            getDetails() {
+                return `Book: ${this.name}<br>Author: ${this.author}<br>Price: ₹${this.price}`;
             }
-        }];
-        // console.log(books[0].getDetails());
-        // console.log(books[1].getDetails());
-        books.forEach(book => console.log(book.getDetails()));      
-    </script>
-</head>
-<body>
-    <div class="container"></div>
+        },
+        {
+            name: "How to Love Yourself",
+            price: 400,
+            author: "Pawan Krishna",
+            getDetails() {
+                return `Book: ${this.name}<br>Author: ${this.author}<br>Price: ₹${this.price}`;
+            }
+        }
+    ];
+
+    document.getElementById("book").innerHTML =
+        books.map(book => `<div class="book-card">${book.getDetails()}</div>`).join("");
+</script>
 </body>
 </html>
