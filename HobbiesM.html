@@ -93,6 +93,33 @@ function displayHobbies(){
   <div class="tab-pane fade" id="nav-disabled" role="tabpanel" aria-labelledby="nav-disabled-tab" tabindex="0">...</div>
 </div>
 
+  <button id="clickButton" class=" btn btn-primary";" onclick="ajaxtest()"> Click Me </button>
+  <div id="ajaxContent"></div>
+
+  <script>
+    function ajaxtest()
+        {
+
+        var url="ajaxText.html";
+        xmlHttp=GetXmlHttpObject(stateChanged);
+        xmlHttp.open("GET", url , true);
+        xmlHttp.send(null);
+        } 
+
+        function stateChanged() 
+        { 
+        if (xmlHttp.readyState==4 || xmlHttp.readyState=="complete")
+        {
+        document.getElementById("ajaxContent").innerHTML=xmlHttp.responseText;
+        }
+        else
+        {
+        document.getElementById("ajaxContent").innerHTML='...<font color=red>Please wait</font>...';
+        }
+}
+  </script>
+
+  <script src="ajax.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container"></div> 
+
+   <script>
+        class Car {
+           public name:string;
+          public price:number;
+            constructor(x:string, y:number) {
+                this.name = x;
+                this.price = y;
+            }
+            printCar(){
+                return `Car: ${this.name}<br>Price: ₹${this.price}`;
+            }
+        }
+        let car1 = new Car("BMW", 5000000);
+        printCar(car1);
+           
+   </script>
+
+</body>
+</html>
