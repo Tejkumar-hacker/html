@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One Piece Arcs</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f2f2f2;
+    }
+
+    .box {
+        max-width: 750px;
+        margin: 30px auto;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .btn {
+        background: #020222;
+        color: white;
+        border: none;
+        padding: 10px 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin: 5px;
+    }
+
+    .btn:hover {
+        background: #7171b8;
+    }
+
+    input {
+        padding: 8px;
+        margin: 5px;
+        width: 200px;
+    }
+
+    .post {
+        background: #111;
+        color: white;
+        padding: 15px;
+        margin-top: 12px;
+        border-radius: 6px;
+        text-align: left;
+    }
+
+    .post h3 {
+        color: gold;
+        margin-top: 0;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="box">
+    <h2>One Piece Arcs</h2>
+
+    <!-- Add Arc -->
+    <input type="text" id="name" placeholder="Arc Name" >
+    <input type="text" id="saga" placeholder="Saga">
+    <input type="text" id="episodes" placeholder="Episodes">
+    <input type="text" id="villain" placeholder="Main Villain">
+    <br>
+    <button class="btn" onclick="addArc()">Add Arc</button>
+    <button class="btn" onclick="delArc()">Delete Arc</button>
+    <button class="btn" onclick="ondisplay()">Fetch Arcs</button>
+
+    <div id="posts"></div>
+</div>
+
+<script>
+const API_URL = "http://localhost:3000/arcs";
+
+// Fetch & display arcs
+function ondisplay() {
+    fetch(API_URL)
+        .then(res => res.json())
+        .then(arcs => {
+            const postsDiv = document.getElementById("posts");
+            postsDiv.innerHTML = "";
+
+            arcs.forEach(arc => {
+                postsDiv.innerHTML += `
+                    <div class="post">
+                        <h3>${arc.name}</h3>
+                        <p><strong>Saga:</strong> ${arc.saga}</p>
+                        <p><strong>Episodes:</strong> ${arc.episodes}</p>
+                        <p><strong>Main Villain:</strong> ${arc.mainVillain}</p>
+                    </div>
+                `;
+            });
+        })
+        .catch(err => console.error(err));
+}
+
+// Add new arc
+function addArc() {
+    const name = document.getElementById("name").value.trim();
+    const saga = document.getElementById("saga").value.trim();
+    const episodes = document.getElementById("episodes").value.trim();
+    const mainVillain = document.getElementById("villain").value.trim();
+
+    if (!name || !saga || !episodes || !mainVillain) {
+        alert("Fill all fields");
+        return;
+    }
+
+    fetch(API_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, saga, episodes, mainVillain })
+    })
+    .then(() => {
+        document.querySelectorAll("input").forEach(i => i.value = "");
+        ondisplay();
+    });
+}
+// Delete arc by name
+function delArc() {
+    const name = document.getElementById("name").value.trim();
+
+    if (!name) {
+        alert("Enter arc name to delete");
+        return;
+    }
+
+    // Step 1: Fetch all arcs
+    fetch(API_URL)
+        .then(res => res.json())
+        .then(arcs => {
+            // Step 2: Find arc by name
+            const arcToDelete = arcs.find(
+                arc => arc.name.toLowerCase() === name.toLowerCase()
+            );
+
+            if (!arcToDelete) {
+                alert("Arc not found");
+                return;
+            }
+
+            // Step 3: Delete using ID
+            fetch(`${API_URL}/${arcToDelete.id}`, {
+                method: "DELETE"
+            })
+            .then(() => {
+                alert(`"${arcToDelete.name}" deleted successfully`);
+                ondisplay(); // refresh the list
+            });
+        })
+        .catch(err => console.error("Delete error:", err));
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+{
+  "arcs": [
+    {
+      "id": "1",
+      "name": "Romance Dawn",
+      "saga": "East Blue",
+      "episodes": "1–3",
+      "mainLocation": "Foosha Village",
+      "mainVillain": "Alvida",
+      "strawHatsJoined": [
+        "Monkey D. Luffy",
+        "Roronoa Zoro"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Orange Town",
+      "saga": "East Blue",
+      "episodes": "4–8",
+      "mainLocation": "Orange Town",
+      "mainVillain": "Buggy",
+      "strawHatsJoined": [
+        "Nami"
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Arlong Park",
+      "saga": "East Blue",
+      "episodes": "31–44",
+      "mainLocation": "Arlong Park",
+      "mainVillain": "Arlong",
+      "strawHatsJoined": [
+        "Nami"
+      ],
+      "iconicMoment": "Luffy places his hat on Nami"
+    },
+    {
+      "id": "4",
+      "name": "Alabasta",
+      "saga": "Alabasta Saga",
+      "episodes": "92–130",
+      "mainLocation": "Kingdom of Alabasta",
+      "mainVillain": "Crocodile",
+      "strawHatsJoined": [
+        "Nico Robin"
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Enies Lobby",
+      "saga": "Water 7 Saga",
+      "episodes": "264–312",
+      "mainLocation": "Enies Lobby",
+      "mainVillain": "Rob Lucci",
+      "iconicMoment": "I Want to Live",
+      "powerUps": [
+        "Gear Second",
+        "Gear Third"
+      ]
+    },
+    {
+      "id": "6",
+      "name": "Marineford",
+      "saga": "Summit War Saga",
+      "episodes": "457–489",
+      "mainLocation": "Marineford",
+      "mainVillain": "Navy & Blackbeard",
+      "majorDeath": "Portgas D. Ace"
+    },
+    {
+      "id": "7",
+      "name": "Dressrosa",
+      "saga": "Dressrosa Saga",
+      "episodes": "629–746",
+      "mainLocation": "Dressrosa",
+      "mainVillain": "Donquixote Doflamingo",
+      "newAllies": [
+        "Trafalgar Law",
+        "Straw Hat Grand Fleet"
+      ]
+    },
+    {
+      "id": "8",
+      "name": "Wano Country",
+      "saga": "Four Emperors Saga",
+      "episodes": "890–present",
+      "mainLocation": "Wano",
+      "mainVillain": "Kaido",
+      "powerUps": [
+        "Advanced Haki",
+        "Gear Fifth"
+      ]
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
